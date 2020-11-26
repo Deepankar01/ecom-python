@@ -1,6 +1,6 @@
 
 
-from app.db.base import Base, Item, User
+
 import os
 import sys
 from logging.config import fileConfig
@@ -22,6 +22,7 @@ config = context.config
 fileConfig(config.config_file_name)
 # add your model's MetaData object here
 # for 'autogenerate' support
+from app.db.base import Base
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,

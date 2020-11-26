@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db import database
 from app.db.database import database
-from .routers import structure
+from .routers import items
 
 app = FastAPI()
 origins = [
@@ -46,8 +46,8 @@ async def shutdown():
 # )
 
 app.include_router(
-    structure.router,
-    prefix="/report",
+    items.router,
+    prefix="/items",
     tags=["structures"],
     # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "no structures"}},
