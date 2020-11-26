@@ -1,6 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from pydantic import BaseModel
-from typing import List
+
 router = APIRouter()
 
 
@@ -14,4 +14,5 @@ class StructureRsp(BaseModel):
 
 @router.get("/{client_id}/{phase_id}", response_model=StructureRsp)
 async def read_structures(phase_id: int, client_id: int):
+    # database.
     return {"data": {}, "success": True}

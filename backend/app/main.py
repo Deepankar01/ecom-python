@@ -1,7 +1,11 @@
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from .db import database
+from .db.base import Base
+from app.db.database import engine, database
 from .routers import structure
 
+Base.metadata.create_all(bind=engine)
 app = FastAPI()
 origins = [
     "http://localhost",
@@ -17,14 +21,24 @@ app.add_middleware(
 )
 
 
-async def get_token_header(x_token: str = Header(...)):
-    if x_token != "fake-super-secret-token":
-        raise HTTPException(status_code=400, detail="X-Token header invalid")
+# async def get_token_header(x_token: str = Header(...)):
+#     if x_token != "fake-super-secret-token":
+#         raise HTTPException(status_code=400, detail="X-Token header invalid")
 
 
 @app.get("/")
 async def main():
     return {"message": "Backend works"}
+
+
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
 
 
 # app.include_router(
