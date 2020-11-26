@@ -1,3 +1,6 @@
+
+
+from app.db.base import Base, Item, User
 import os
 import sys
 from logging.config import fileConfig
@@ -9,9 +12,7 @@ from sqlalchemy import pool
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # load_dotenv(os.path.join(BASE_DIR, ".env"))
 sys.path.append(BASE_DIR)
-print("---------------------------------")
-print(BASE_DIR)
-print("---------------------------------")
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -21,7 +22,6 @@ config = context.config
 fileConfig(config.config_file_name)
 # add your model's MetaData object here
 # for 'autogenerate' support
-from app.db.base import Base
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
@@ -48,6 +48,7 @@ def run_migrations_offline():
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        compare_type=True
     )
 
     with context.begin_transaction():

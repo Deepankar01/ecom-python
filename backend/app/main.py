@@ -1,11 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db import database
-from .db.base import Base
-from app.db.database import engine, database
+from app.db.database import database
 from .routers import structure
 
-Base.metadata.create_all(bind=engine)
 app = FastAPI()
 origins = [
     "http://localhost",
