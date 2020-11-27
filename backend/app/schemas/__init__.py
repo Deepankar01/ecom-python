@@ -1,2 +1,2 @@
-from .item import Item, ItemBase, ItemCreate
+from .product import Product, ProductBase, ProductCreate
 from .user import User, UserBase, UserCreate
