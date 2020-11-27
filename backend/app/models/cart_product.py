@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
-from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, ForeignKey
 from app.db.base_class import Base
 
 if TYPE_CHECKING:
@@ -8,6 +9,5 @@ if TYPE_CHECKING:
 
 
 class CartProduct(Base):
-    id = Column(Integer, primary_key=True, index=True)
-    cart_id = Column(Integer, ForeignKey('cart.id'), primary_key=True)
-    product_id = Column(Integer, ForeignKey('product.id'), primary_key=True)
+    cart_id = Column(UUID(as_uuid=True), ForeignKey('cart.id'), primary_key=True)
+    product_id = Column(UUID(as_uuid=True), ForeignKey('product.id'), primary_key=True)

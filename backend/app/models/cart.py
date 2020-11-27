@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
-from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, ForeignKey
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
@@ -9,6 +10,5 @@ if TYPE_CHECKING:
 
 
 class Cart(Base):
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("user.id"))
+    user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"))
     products = relationship('Product', secondary='CartProducts')
