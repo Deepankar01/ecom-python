@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from sqlalchemy import Column, ForeignKey, Integer, Float
+from sqlalchemy import Column, ForeignKey, Integer, Float, Boolean
 from app.db.base_class import Base
 
 if TYPE_CHECKING:
@@ -10,4 +10,5 @@ if TYPE_CHECKING:
 class PrdSeller(Base):
     seller_id = Column(Integer, ForeignKey('seller.id'), primary_key=True)
     product_id = Column(Integer, ForeignKey('product.id'), primary_key=True)
+    is_active = Column(Boolean, default=False)
     price = Column(Float)

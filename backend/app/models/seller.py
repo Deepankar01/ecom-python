@@ -10,5 +10,5 @@ if TYPE_CHECKING:
 class Seller(Base):
     id = Column(Integer, primary_key=True, index=True)
     products = relationship('Product', secondary='PrdSeller')
-    is_active = Column(Boolean, default=True)
+    is_active = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("user.id"))
