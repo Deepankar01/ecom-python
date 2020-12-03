@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException
 from app.schemas import Product as ProductSchema
 from app.models import Product
 from app.db.database import database
-
+from sqlalchemy import select
 router = APIRouter()
 
 
@@ -15,7 +15,7 @@ async def read_items():
 
 
 @router.get("/{product_id}", response_model=ProductSchema)
-async def read_items(product_id: UUID4):
+async def read_item(product_id: UUID4):
     query = Product.__table__.select().where(Product.id == product_id)
     product = await database.fetch_one(query)
     if product is None:

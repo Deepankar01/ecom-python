@@ -3,16 +3,16 @@ from typing import Optional
 from pydantic import BaseModel, UUID4
 
 
-class ProductBase(BaseModel):
+class SellerBase(BaseModel):
     title: str
     description: Optional[str] = None
 
 
-class ProductCreate(ProductBase):
+class SellerCreate(SellerBase):
     pass
 
 
-class Product(ProductBase):
+class Seller(SellerBase):
     id: UUID4
 
     class Config:
