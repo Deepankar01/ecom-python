@@ -9,13 +9,13 @@ router = APIRouter()
 
 
 @router.get("/", response_model=List[ProductSchema])
-async def read_items():
+async def get_list():
     query = Product.__table__.select()
     return await database.fetch_all(query)
 
 
 @router.get("/{product_id}", response_model=ProductSchema)
-async def read_item(product_id: UUID4):
+async def get_product(product_id: UUID4):
     query = Product.__table__.select().where(Product.id == product_id)
     product = await database.fetch_one(query)
     if product is None:
