@@ -21,6 +21,10 @@ class UserCreate(UserBase):
         return sha256(salt.encode() + self.password.encode()).hexdigest() + ':' + salt
 
 
+class CreateUser(UserBase):
+    id: UUID4
+
+
 class User(UserBase):
     id: UUID4
     is_active: bool
