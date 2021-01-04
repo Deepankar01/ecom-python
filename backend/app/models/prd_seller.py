@@ -1,4 +1,3 @@
-from typing import TYPE_CHECKING
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, ForeignKey, Integer, Float, Boolean
 from sqlalchemy.orm import relationship
