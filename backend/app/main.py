@@ -2,7 +2,6 @@ import graphene
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db import database
-from .routers import products, sellers, user
 from starlette.graphql import GraphQLApp
 from .graphql import Query
 
