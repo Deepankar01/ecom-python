@@ -10,5 +10,5 @@ if TYPE_CHECKING:
 class Product(Base):
     title = Column(String, index=True)
     description = Column(String, index=True)
-    sellers = relationship('Seller', secondary='PrdSeller')
-    meta = relationship('Meta', secondary='ProductMeta')
+    # sellers = relationship('PrdSeller', secondary='prdseller')
+    # meta = relationship('ProductMeta', secondary='productmeta')

@@ -9,6 +9,6 @@ if TYPE_CHECKING:
 
 
 class Seller(Base):
-    products = relationship('Product', secondary='PrdSeller')
+    # products = relationship('PrdSeller', secondary='prdseller')
     is_active = Column(Boolean, default=False)
     user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"))

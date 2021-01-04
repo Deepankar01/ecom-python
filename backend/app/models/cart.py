@@ -11,4 +11,4 @@ if TYPE_CHECKING:
 
 class Cart(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"))
-    products = relationship('Product', secondary='CartProducts')
+    products = relationship('Product', secondary='cartproduct')
