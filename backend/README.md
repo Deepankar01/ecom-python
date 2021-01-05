@@ -5,6 +5,8 @@
 1. install dependencies from `requirements.txt`
 2. run migration `alembic upgrade head`
 3. database config are in `app.db.database`
+4. run `python api.py`
+5. open in browser http://0.0.0.0:8000/gq to view gq editor
 
 ### Database setup (Postgres Container)
 
