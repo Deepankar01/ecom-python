@@ -6,6 +6,5 @@ from sqlalchemy.dialects.postgresql import UUID
 
 class Seller(Base):
     products = relationship('Product', secondary='prdseller')
-    price = relationship('PrdSeller')
     is_active = Column(Boolean, default=False)
     user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"))

@@ -12,3 +12,4 @@ class PrdSeller(Base):
     is_active = Column(Boolean, default=False)
     price_id = Column(UUID(as_uuid=True), ForeignKey(
         'productprice.id'), primary_key=True)
+    coupon = relationship('ProductCoupon', backref="prdseller")
