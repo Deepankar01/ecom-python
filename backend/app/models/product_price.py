@@ -5,4 +5,6 @@ from app.db.base_class import Base
 
 
 class ProductPrice(Base):
-    price = Column(Float)
+    actual_price = Column(Float)
+    discounted_price = Column(Float)
+    shipping_charges = Column(Float)
