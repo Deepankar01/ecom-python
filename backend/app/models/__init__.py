@@ -5,3 +5,5 @@ from .prd_seller import PrdSeller
 from .product_meta import ProductMeta
 from .cart import Cart
 from .cart_product import CartProduct
+from .product_price import ProductPrice
+from .product_coupon import ProductCoupon

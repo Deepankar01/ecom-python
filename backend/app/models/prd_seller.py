@@ -10,4 +10,5 @@ class PrdSeller(Base):
     product_id = Column(UUID(as_uuid=True), ForeignKey(
         'product.id'), primary_key=True)
     is_active = Column(Boolean, default=False)
-    price = Column(Float)
+    price_id = Column(UUID(as_uuid=True), ForeignKey(
+        'productprice.id'), primary_key=True)

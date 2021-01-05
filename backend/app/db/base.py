@@ -6,5 +6,7 @@ from app.models.user import User  # noqa
 from app.models.product_meta import ProductMeta  # noqa
 from app.models.seller import Seller  # noqa
 from app.models.prd_seller import PrdSeller  # noqa
-from app.models.cart_product import CartProduct # noqa
-from app.models.cart import Cart # noqa
+from app.models.cart_product import CartProduct  # noqa
+from app.models.cart import Cart  # noqa
+from app.models.product_price import ProductPrice  # noqa
+from app.models.product_coupon import ProductCoupon

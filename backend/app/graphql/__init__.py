@@ -1,12 +1,10 @@
 import graphene
-from graphene_sqlalchemy import SQLAlchemyObjectType
+from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel
 from sqlalchemy.orm import class_mapper
+from sqlalchemy.sql import or_
 
 class_mapper(UserModel)
-class_mapper(CartModel)
-class_mapper(ProductModel)
-class_mapper(SellerModel)
 
 
 class User(SQLAlchemyObjectType):
@@ -39,6 +37,21 @@ class Query(graphene.ObjectType):
     cart = graphene.List(Cart)
     products = graphene.List(Product)
 
+    product_by_id = graphene.Field(Product, id=graphene.UUID())
+    product_by_text = graphene.List(Product, search=graphene.String())
+
+    @staticmethod
+    def resolve_product_by_text(parent, info, **args):
+        q = args.get('search')
+        products_query = Product.get_query(info)
+        return products_query.filter(or_(ProductModel.title.contains(q), ProductModel.description.contains(q))).all()
+
+    @staticmethod
+    def resolve_product_by_id(parent, info, **args):
+        q = args.get('id')
+        products_query = Product.get_query(info)
+        return products_query.get(q)
+
     def resolve_users(self, info):
         query = User.get_query(info)
         return query.all()
@@ -51,6 +64,9 @@ class Query(graphene.ObjectType):
         query = Cart.get_query(info)
         return query.all()
 
-    def resolve_product(self, info):
+    def resolve_products(self, info):
         query = Product.get_query(info)
         return query.all()
+
+
+schema = graphene.Schema(query=Query, types=[Product, User, Cart, Seller])

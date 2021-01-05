@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db import database
 from starlette.graphql import GraphQLApp
-from .graphql import Query
+from .graphql import schema
 
 app = FastAPI()
 origins = [
@@ -29,4 +29,4 @@ app.add_middleware(
 async def main():
     return {"message": "Backend works"}
 
-app.add_route("/gq", GraphQLApp(schema=graphene.Schema(query=Query)))
+app.add_route("/gq", GraphQLApp(schema=schema))
