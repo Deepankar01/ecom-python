@@ -1,6 +1,6 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdSeller as PrdSellerModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel
+from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdSeller as PrdSellerModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel
 from sqlalchemy.orm import class_mapper
 from sqlalchemy.sql import or_
 
@@ -16,7 +16,7 @@ class User(SQLAlchemyObjectType):
 class Cart(SQLAlchemyObjectType):
     class Meta:
         model = CartModel
-        exclude_fields = ("created_at", "updated_at")
+        exclude_fields = ("created_at", "updated_at", "id", "buyer_id")
 
 
 class Product(SQLAlchemyObjectType):
@@ -76,6 +76,12 @@ class StoreManager(SQLAlchemyObjectType):
                           'id', 'user_id', 'store_id')
 
 
+class Buyer(SQLAlchemyObjectType):
+    class Meta:
+        model = BuyerModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
 class Query(graphene.ObjectType):
     users = graphene.List(User)
     sellers = graphene.List(Seller)
@@ -114,4 +120,5 @@ class Query(graphene.ObjectType):
         return query.all()
 
 
-schema = graphene.Schema(query=Query, types=[Product, User, Cart, Seller])
+schema = graphene.Schema(query=Query, types=[
+                         Product, User, Cart, Seller, Store, Buyer, Address, StoreManager])

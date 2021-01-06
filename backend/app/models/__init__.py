@@ -10,3 +10,4 @@ from .product_coupon import ProductCoupon
 from .store import Store
 from .address import Address
 from .store_manager import StoreManager
+from .buyer import Buyer
