@@ -87,6 +87,7 @@ class Query(graphene.ObjectType):
     sellers = graphene.List(Seller)
     cart = graphene.List(Cart)
     products = graphene.List(Product)
+    store = graphene.List(Store)
 
     product_by_id = graphene.Field(Product, id=graphene.UUID())
     product_by_text = graphene.List(Product, search=graphene.String())
@@ -102,6 +103,10 @@ class Query(graphene.ObjectType):
         q = args.get('id')
         products_query = Product.get_query(info)
         return products_query.get(q)
+
+    def resolve_store(self, info):
+        query = Store.get_query(info)
+        return query.all()
 
     def resolve_users(self, info):
         query = User.get_query(info)
