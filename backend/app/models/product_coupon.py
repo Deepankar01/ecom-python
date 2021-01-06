@@ -12,12 +12,12 @@ class CouponType(enum.Enum):
 
 class ProductCoupon(Base):
     prd_seller_id = Column(UUID(as_uuid=True), ForeignKey(
-        'prdseller.id'), primary_key=True)
+        'prdstore.id'), primary_key=True)
     coupon_code = Column(String, unique=True)
     expiry_time = Column(DateTime(timezone=True),)
     start_time = Column(DateTime(timezone=True),)
     discount_type = Column(Enum(CouponType), default=CouponType.price)
     is_active = Column(Boolean, default=False)
     count = Column(Integer, default=0)
-    product = relationship('Product', secondary='prdseller')
-    seller = relationship('Seller', secondary='prdseller')
+    product = relationship('Product', secondary='prdstore')
+    store = relationship('Store', secondary='prdstore')

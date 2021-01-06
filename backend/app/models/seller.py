@@ -5,7 +5,7 @@ from sqlalchemy.dialects.postgresql import UUID
 
 
 class Seller(Base):
-    products = relationship('Product', secondary='prdseller')
+    # products = relationship('Product', secondary='prdseller')
     is_active = Column(Boolean, default=False)
     user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"))
-    store = relationship('Store', backref="seller")
+    store = relationship('Store', backref="seller", uselist=False)

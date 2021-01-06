@@ -19,6 +19,7 @@ class Store(Base):
     address = relationship('Address', backref="store", uselist=False)
     store_manager = relationship(
         'StoreManager', backref="store", uselist=False)
+    products = relationship('Product', secondary="prdstore")
     # maximum_distance
     # images
     # logo

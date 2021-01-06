@@ -6,7 +6,7 @@ from app.db.base_class import Base
 class Product(Base):
     title = Column(String, index=True)
     description = Column(String, index=True)
-    info = relationship('PrdSeller', backref='product')
-    price = relationship('ProductPrice', secondary='prdseller')
-    sellers = relationship('Seller', secondary='prdseller')
+    info = relationship('PrdStore', backref='product')
+    price = relationship('ProductPrice', secondary='prdstore')
+    store = relationship('Store', secondary='prdstore')
     meta = relationship('ProductMeta', backref="prd")
