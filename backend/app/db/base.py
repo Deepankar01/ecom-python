@@ -10,3 +10,6 @@ from app.models.cart_product import CartProduct  # noqa
 from app.models.cart import Cart  # noqa
 from app.models.product_price import ProductPrice  # noqa
 from app.models.product_coupon import ProductCoupon
+from app.models.store import Store
+from app.models.address import Address
+from app.models.store_manager import StoreManager

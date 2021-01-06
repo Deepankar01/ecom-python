@@ -7,3 +7,6 @@ from .cart import Cart
 from .cart_product import CartProduct
 from .product_price import ProductPrice
 from .product_coupon import ProductCoupon
+from .store import Store
+from .address import Address
+from .store_manager import StoreManager
