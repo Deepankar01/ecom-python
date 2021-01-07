@@ -1,6 +1,6 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdStore as PrdStoreModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel, LocalStore as LocalStoreModel
+from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdStore as PrdStoreModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel, LocalStore as LocalStoreModel, ProductVariant as ProductVariantModel, ProductVariantType as ProductVariantTypeModel, ProductVariantTypeOption as ProductVariantTypeOptionsModel, ProductVariantOptionMap as ProductVariantOptionMapModel
 from sqlalchemy.orm import class_mapper
 from sqlalchemy.sql import or_
 
@@ -53,7 +53,7 @@ class ProductPrice(SQLAlchemyObjectType):
 class ProductSeller(SQLAlchemyObjectType):
     class Meta:
         model = PrdStoreModel
-        only_fields = ('is_active', 'coupon')
+        only_fields = ('is_active', 'coupon', 'variants')
 
 
 class Store(SQLAlchemyObjectType):
@@ -85,6 +85,30 @@ class Buyer(SQLAlchemyObjectType):
 class LocalStore(SQLAlchemyObjectType):
     class Meta:
         model = LocalStoreModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
+class ProductVariant(SQLAlchemyObjectType):
+    class Meta:
+        model = ProductVariantModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
+class ProductVariantType(SQLAlchemyObjectType):
+    class Meta:
+        model = ProductVariantTypeModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
+class ProductVariantTypeOptions(SQLAlchemyObjectType):
+    class Meta:
+        model = ProductVariantTypeOptionsModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
+class ProductVariantOptionMap(SQLAlchemyObjectType):
+    class Meta:
+        model = ProductVariantOptionMapModel
         exclude_fields = ("created_at", "updated_at", 'id')
 
 

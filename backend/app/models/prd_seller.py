@@ -13,3 +13,4 @@ class PrdStore(Base):
     price_id = Column(UUID(as_uuid=True), ForeignKey(
         'productprice.id'), primary_key=True)
     coupon = relationship('ProductCoupon', backref="prdstore")
+    variants = relationship('ProductVariant', backref="product")

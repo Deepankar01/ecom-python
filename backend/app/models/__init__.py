@@ -12,3 +12,7 @@ from .address import Address
 from .store_manager import StoreManager
 from .buyer import Buyer
 from .local_store import LocalStore
+from .product_variant_type import ProductVariantType
+from .product_variant_type_options import ProductVariantTypeOption
+from .product_variant import ProductVariant
+from .product_variant_option_map import ProductVariantOptionMap

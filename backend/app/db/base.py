@@ -15,3 +15,7 @@ from app.models.address import Address
 from app.models.store_manager import StoreManager
 from app.models.buyer import Buyer
 from app.models.local_store import LocalStore
+from app.models.product_variant_type import ProductVariantType
+from app.models.product_variant_type_options import ProductVariantTypeOption
+from app.models.product_variant import ProductVariant
+from app.models.product_variant_option_map import ProductVariantOptionMap
