@@ -19,3 +19,4 @@ from app.models.product_variant_type import ProductVariantType
 from app.models.product_variant_type_options import ProductVariantTypeOption
 from app.models.product_variant import ProductVariant
 from app.models.product_variant_option_map import ProductVariantOptionMap
+from app.models.category import Category

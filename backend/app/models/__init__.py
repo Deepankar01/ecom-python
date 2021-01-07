@@ -16,3 +16,4 @@ from .product_variant_type import ProductVariantType
 from .product_variant_type_options import ProductVariantTypeOption
 from .product_variant import ProductVariant
 from .product_variant_option_map import ProductVariantOptionMap
+from .category import Category

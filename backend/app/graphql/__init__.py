@@ -1,6 +1,6 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdStore as PrdStoreModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel, LocalStore as LocalStoreModel, ProductVariant as ProductVariantModel, ProductVariantType as ProductVariantTypeModel, ProductVariantTypeOption as ProductVariantTypeOptionsModel, ProductVariantOptionMap as ProductVariantOptionMapModel
+from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdStore as PrdStoreModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel, LocalStore as LocalStoreModel, ProductVariant as ProductVariantModel, ProductVariantType as ProductVariantTypeModel, ProductVariantTypeOption as ProductVariantTypeOptionsModel, ProductVariantOptionMap as ProductVariantOptionMapModel, Category as CategoryModel
 from sqlalchemy.orm import class_mapper
 from sqlalchemy.sql import or_
 
@@ -109,6 +109,12 @@ class ProductVariantTypeOptions(SQLAlchemyObjectType):
 class ProductVariantOptionMap(SQLAlchemyObjectType):
     class Meta:
         model = ProductVariantOptionMapModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
+class Category(SQLAlchemyObjectType):
+    class Meta:
+        model = CategoryModel
         exclude_fields = ("created_at", "updated_at", 'id')
 
 
