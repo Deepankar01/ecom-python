@@ -11,3 +11,4 @@ from .store import Store
 from .address import Address
 from .store_manager import StoreManager
 from .buyer import Buyer
+from .local_store import LocalStore

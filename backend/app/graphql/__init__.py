@@ -1,6 +1,6 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdStore as PrdStoreModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel
+from app.models import User as UserModel, Cart as CartModel, Product as ProductModel, Seller as SellerModel, ProductCoupon as ProductCouponModel, ProductMeta as ProductMetaModel, ProductPrice as ProductPriceModel, PrdStore as PrdStoreModel, Store as StoreModel, Address as AddressModel, StoreManager as StoreManagerModel, Buyer as BuyerModel, LocalStore as LocalStoreModel
 from sqlalchemy.orm import class_mapper
 from sqlalchemy.sql import or_
 
@@ -79,6 +79,12 @@ class StoreManager(SQLAlchemyObjectType):
 class Buyer(SQLAlchemyObjectType):
     class Meta:
         model = BuyerModel
+        exclude_fields = ("created_at", "updated_at", 'id')
+
+
+class LocalStore(SQLAlchemyObjectType):
+    class Meta:
+        model = LocalStoreModel
         exclude_fields = ("created_at", "updated_at", 'id')
 
 

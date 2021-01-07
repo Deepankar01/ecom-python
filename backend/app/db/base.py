@@ -14,3 +14,4 @@ from app.models.store import Store
 from app.models.address import Address
 from app.models.store_manager import StoreManager
 from app.models.buyer import Buyer
+from app.models.local_store import LocalStore
